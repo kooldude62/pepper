@@ -3,58 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pepper</title>
+    <title>Floating Pepper</title>
     <style>
         body {
-            margin: 0;
-            overflow: hidden;
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ_LkfIz0m0sgslZb7FKTjY4Nf8BIj5Sn2Eg&s');
+            background-image: url('https://thumbs.dreamstime.com/b/light-green-space-color-texture-abstract-background-galaxy-black-173561169.jpg');
             background-size: cover;
-            
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+            animation: moveBackground 10s linear infinite;
+            flex-direction: column;
         }
-
+        
+        @keyframes moveBackground {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 0%; }
+        }
+        
         .pepper {
             position: absolute;
-            width: 100px;
-            height: auto;
-            animation: float 3s ease-in-out infinite;
-            left: 40%;
-            bottom: 40%;
-            transform: translateX(-50%);
+            width: 150px;
+            animation: float 3s infinite ease-in-out;
+            transition: filter 0.5s ease;
         }
-
+        
         @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+            100% { transform: translateY(0px); }
         }
-
-        .room {
+        
+        .doors {
+            display: flex;
+            gap: 20px;
             position: absolute;
             bottom: 20px;
-            width: 72.75px;
-            height: 161.75px;
-            background-image: url('https://www.theaterseatstore.com/blog/wp-content/uploads/2020/10/door_image.png');
+        }
+        
+        .door {
+            width: 100px;
+            height: 150px;
+            background-image: url('https://5.imimg.com/data5/SELLER/Default/2022/8/MN/AK/NZ/22067936/jali-door-or-wooden-mesh-door-pine-wood--500x500.png');
             background-size: cover;
             cursor: pointer;
-            animation: float 2s ease-in-out infinite;
+            border: none;
+            transition: box-shadow 0.3s ease;
         }
-
-        .room1 { left: 20%; }
-        .room2 { left: 40%; }
-        .room3 { right: 25%; }
+        
+        .door:nth-child(1) { animation: float1 3s infinite ease-in-out; }
+        .door:nth-child(2) { animation: float2 4s infinite ease-in-out; }
+        .door:nth-child(3) { animation: float3 5s infinite ease-in-out; }
+        .door:nth-child(4) { animation: float4 6s infinite ease-in-out; }
+        
+        @keyframes float1 {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes float2 {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(25px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes float3 {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes float4 {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(35px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .door:hover {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
     </style>
 </head>
 <body>
-    <img src="https://0bb8856ba8259ec33e3d-a40599a114f3a4c6d0979c3ffe0b2bf5.ssl.cf2.rackcdn.com/0000000040880_CL_hyvee1_default_large.png" class="pepper" id="pepper">
-
-    <div class="room room1" onclick="changePepper('https://0bb8856ba8259ec33e3d-a40599a114f3a4c6d0979c3ffe0b2bf5.ssl.cf2.rackcdn.com/0000000040880_CL_hyvee1_default_large.png')"></div>
-    <div class="room room2" onclick="changePepper('https://tones.com/wp-content/uploads/product-00041351534561.png')"></div>
-    <div class="room room3" onclick="changePepper('https://www.lipmanfamilyfarms.com/wp-content/uploads/2020/09/Green-Bell-Pepper-hero@2x.png')"></div>
-
+    <img id="pepper" src="https://0bb8856ba8259ec33e3d-a40599a114f3a4c6d0979c3ffe0b2bf5.ssl.cf2.rackcdn.com/0000000040880_CL_hyvee1_default_large.png" alt="Floating Pepper" class="pepper">
+    
+    <div class="doors">
+        <button class="door" onclick="changeColor('hue-rotate(0deg)')"></button>
+        <button class="door" onclick="changeColor('hue-rotate(90deg)')"></button>
+        <button class="door" onclick="changeColor('hue-rotate(180deg)')"></button>
+        <button class="door" onclick="changeColor('hue-rotate(270deg)')"></button>
+    </div>
+    
     <script>
-        function changePepper(image) {
-            document.getElementById('pepper').src = image;
+        function changeColor(filterValue) {
+            document.getElementById('pepper').style.filter = filterValue;
         }
     </script>
 </body>
