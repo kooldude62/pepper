@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pepper</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ_LkfIz0m0sgslZb7FKTjY4Nf8BIj5Sn2Eg&s');
+            background-size: cover;
+            
+        }
+
+        .pepper {
+            position: absolute;
+            width: 100px;
+            height: auto;
+            animation: float 3s ease-in-out infinite;
+            left: 40%;
+            bottom: 40%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .room {
+            position: absolute;
+            bottom: 20px;
+            width: 72.75px;
+            height: 161.75px;
+            background-image: url('https://www.theaterseatstore.com/blog/wp-content/uploads/2020/10/door_image.png');
+            background-size: cover;
+            cursor: pointer;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .room1 { left: 20%; }
+        .room2 { left: 40%; }
+        .room3 { right: 25%; }
+    </style>
+</head>
+<body>
+    <img src="https://0bb8856ba8259ec33e3d-a40599a114f3a4c6d0979c3ffe0b2bf5.ssl.cf2.rackcdn.com/0000000040880_CL_hyvee1_default_large.png" class="pepper" id="pepper">
+
+    <div class="room room1" onclick="changePepper('https://0bb8856ba8259ec33e3d-a40599a114f3a4c6d0979c3ffe0b2bf5.ssl.cf2.rackcdn.com/0000000040880_CL_hyvee1_default_large.png')"></div>
+    <div class="room room2" onclick="changePepper('https://tones.com/wp-content/uploads/product-00041351534561.png')"></div>
+    <div class="room room3" onclick="changePepper('https://www.lipmanfamilyfarms.com/wp-content/uploads/2020/09/Green-Bell-Pepper-hero@2x.png')"></div>
+
+    <script>
+        function changePepper(image) {
+            document.getElementById('pepper').src = image;
+        }
+    </script>
+</body>
+</html>
